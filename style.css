@@ -15,10 +15,11 @@ body {
   /* margin: auto; */
   text-align: center;
   padding: 20px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 h1 {
   margin-bottom: 20px;
+  color: #66bfbf;
 }
 .tableView table {
   border-collapse: collapse;

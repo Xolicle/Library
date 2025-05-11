@@ -1,2 +1,5 @@
 # Library
-Odin Project: Learning JavaScript
+
+Odin Project: building a digital library
+<br>
+https://xolicle.github.io/Library/
