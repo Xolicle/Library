@@ -12,7 +12,7 @@ function Book(id, title, author, genre, pages, readStatus) {
   this["read status"] = readStatus;
 }
 
-// console.log(`id = ${crypto.randomUUID()}`);
+//**************Adding Books to Library**********/
 function addBookToLibrary(title, author, genre, pages, readStatus) {
   let id = crypto.randomUUID();
   // console.log(`id = ${id}`);
@@ -43,27 +43,14 @@ addBookToLibrary(
   "yes"
 );
 
-// function displayBooks() {
-//   for (const book of bookLibrary) {
-//     console.log(
-//       `ID: ${book.id}, Title:${book.title}, Author:${book.author}, Genre:${book.genre}`
-//     );
-//   }
-// }
-// displayBooks();
+//****************Create Table***************/
 function createTable() {
-  // table.style.width = "500px";
-  // table.style.borderTop = "1px solid red";
-  // table.style.borderRight = "1px solid red";
-
   const tr = document.createElement("tr");
 
   if (!table.querySelector("thead")) {
     const thead = document.createElement("thead");
     for (const head of tableHead) {
       let th = document.createElement("th");
-      // th.style.borderLeft = "1px solid red";
-      // th.style.borderBottom = "1px solid red";
       th.appendChild(document.createTextNode(head));
       tr.appendChild(th);
       thead.appendChild(tr);
@@ -92,26 +79,22 @@ function createTable() {
     const removeBtn = document.createElement("button");
     removeBtn.textContent = "Delete Row";
     removeBtn.className = "delete";
-    removeCell.className = "deleteRow";
     removeCell.appendChild(removeBtn);
     tbody.appendChild(tr);
     // table.appendChild(tbody);
   });
 
   tableView.appendChild(table);
-  // let row = "td:nth-child(5)";
   const status = document.querySelectorAll(".read");
-  console.log(status);
+  // console.log(status);
   status.forEach((st) => {
-    console.log(st);
-    console.log(`in create table ${st.textContent}`);
+    // console.log(st);
+    // console.log(`in create table ${st.textContent}`);
     createToggleSwitch(st);
   });
-
-  // console.log(status);
 }
 createTable();
-// new window (dialog) to add new Book()
+//************ new window (dialog) to add new Book()****************//
 const dialog = document.createElement("dialog");
 dialog.id = "dialog";
 const form = document.createElement("form");
@@ -198,6 +181,9 @@ document.body.appendChild(dialog);
 addBook.addEventListener("click", () => {
   dialog.showModal();
 });
+//********************End of creating dialog********************/
+
+//***Confirm Button****//
 confirmBtn.addEventListener("click", (e) => {
   e.preventDefault();
   addBookToLibrary(
@@ -205,8 +191,11 @@ confirmBtn.addEventListener("click", (e) => {
     author.value,
     genre.value,
     pages.value,
-    readSelect.value
+    readSelect.value.toLowerCase()
   );
+  for (const key of bookLibrary) {
+    console.log(key);
+  }
   createTable();
   title.value = "";
   author.value = "";
@@ -235,31 +224,32 @@ confirmBtn.addEventListener("click", (e) => {
 //     console.log(row);
 //   });
 // });
-table.addEventListener("click", (event) => {
-  if (event.target.classList.contains("deleteRow")) {
-    // Check if the clicked element has the class "delete"
-    const row = event.target.closest("tr"); // Find the closest table row
+
+//************Remove Row with a click of a button*********** */
+table.addEventListener("click", (e) => {
+  if (e.target.classList.contains("delete")) {
+    const row = e.target.closest("tr"); // Find the closest table row
+    // console.log(row);
     if (row) {
       const bookId = row.cells[0].textContent; // Get the book ID from the first cell (assuming ID is the first column)
       removeBook(bookId); //Remove the book
-      console.log(bookId);
+      // console.log(bookId);
     }
   }
 });
-// * Remove the book from the `bookLibrary` array.
-// * Remove the corresponding row from the HTML table.
 
+// *********** Remove the book from the `bookLibrary` array and
+// ...the corresponding row from the HTML table**********/
 function removeBook(bookId) {
   // 1. Remove from bookLibrary
   const index = bookLibrary.findIndex((book) => book.id === bookId); //Find the index of the book with the matching ID
   if (index !== -1) {
     bookLibrary.splice(index, 1); // Remove the book from the array
   }
-
-  // 2. Remove from the table (Efficient way)
-  createTable(); //  Re-render the whole table.  This is often the simplest approach.
-  //createTable in my case
+  createTable();
 }
+
+//***************Create a toggle switch*****************/
 function createToggleSwitch(td) {
   let rowStatus = td.textContent;
   const label = document.createElement("label");
