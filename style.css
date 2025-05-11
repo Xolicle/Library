@@ -1,0 +1,202 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  /* height: 100vh; if you want to vertical centre align a div*/
+}
+.container {
+  /* width: 100%; */
+  /* min-height: 100%; */
+  /* margin: auto; */
+  text-align: center;
+  padding: 20px;
+  border: 1px solid red;
+}
+h1 {
+  margin-bottom: 20px;
+}
+.tableView table {
+  border-collapse: collapse;
+  width: 100%;
+  color: #66bfbf;
+}
+.tableView table td,
+.tableView table th {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+.tableView table tr:nth-child(even) {
+  background-color: #eaf6f6;
+}
+.tableView table tr:hover {
+  background-color: #c4fafa;
+}
+.tableView table th {
+  padding: 12px;
+  /* text-align: left; */
+  background-color: #66bfbf;
+  color: #fff;
+  text-transform: capitalize;
+}
+#addBook {
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: #66bfbf;
+  color: #fff;
+}
+#addBook:hover {
+  background-color: #fff;
+  color: #66bfbf;
+  border: 1px solid #66bfbf;
+}
+.delete {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: #66bfbf;
+  color: #fff;
+}
+::backdrop {
+  background: linear-gradient(
+    109.6deg,
+    rgb(154, 227, 226) 11.2%,
+    rgb(105, 210, 216) 91.1%
+  );
+  opacity: 0.65;
+}
+dialog {
+  padding: 10px;
+  /* border: 1px solid red; */
+  margin: auto;
+  width: 30%;
+  color: #66bfbf;
+  border-radius: 20px;
+}
+dialog form {
+  padding: 20px;
+  /* border: 1px solid purple; */
+}
+form p {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+form label {
+  display: flex;
+  justify-content: space-around;
+}
+form input,
+select {
+  height: 30px;
+  max-width: 140px;
+  border: 1px solid #66bfbf;
+  outline: none;
+  border-radius: 8px;
+}
+form input[type="text"]:focus,
+form input[type="number"]:focus {
+  border: 1px solid #155263;
+}
+form input[type="text"] {
+  margin-left: 40px;
+}
+#dialogBtn {
+  display: flex;
+  justify-content: center;
+}
+#dialogBtn button {
+  margin: 10px;
+  border: 2px solid #66bfbf;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 20px;
+  width: 150px;
+  font-weight: 700;
+  color: #66bfbf;
+}
+.readStatus {
+  display: flex;
+  justify-content: space-around;
+}
+select,
+::picker(select) {
+  appearance: base-select;
+  padding: 5px;
+  width: 130px;
+}
+select option {
+  color: #66bfbf;
+}
+
+/* checkbox with span */
+/* Container for the toggle */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 74px;
+  height: 36px;
+}
+/*  */
+
+/* Hide default checkbox */
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The track */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #eaf6f6;
+  border-radius: 24px;
+  width: 100%;
+  height: 100%;
+  transition: background-color 0.3s;
+  border: 1px solid #66bfbf;
+}
+
+/* The circular slider */
+.slider::before {
+  content: "NO";
+  position: absolute;
+  height: 10px;
+  width: 20px;
+  left: 4px;
+  top: 4px;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  padding: 9px 4px;
+  color: #fff;
+  background-color: #66bfbf;
+  border-radius: 50%;
+  /* transition: transform 0.3s; */
+  transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+}
+
+/* Toggled state */
+.toggle-switch input:checked + .slider {
+  background-color: #66bfbf;
+}
+
+.toggle-switch input:checked + .slider::before {
+  content: "YES";
+  left: 42px;
+  color: #66bfbf;
+  background-color: #eaf6f6;
+  /* transform: translateX(26px); */
+}
+.read {
+  text-align: left;
+}
